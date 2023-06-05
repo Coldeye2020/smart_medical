@@ -1,0 +1,15 @@
+# Dataset/TestingSet/LungInfection-Test/GT/*
+# Dataset/TestingSet/LungInfection-Test/Imgs/*
+# Dataset/TrainingSet/LungInfection-Train/Doctor-label/GT/*
+# Dataset/TrainingSet/LungInfection-Train/Doctor-label/Imgs/*
+# Dataset/TrainingSet/LungInfection-Train/Doctor-label/Edge/*
+# Dataset/TrainingSet/LungInfection-Train/Pseudo-label/Edge/*
+# Dataset/TrainingSet/LungInfection-Train/Pseudo-label/GT/*
+# Dataset/TrainingSet/LungInfection-Train/Pseudo-label/Imgs/*
+Dataset/**/*.png
+Dataset/**/*.jpg
+Dataset/**/*.nii.gz
+!Dataset/**/*.gitkeep
+Snapshots/*
+DataProcess/volumes/*
+
