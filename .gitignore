@@ -10,6 +10,7 @@ Dataset/**/*.png
 Dataset/**/*.jpg
 Dataset/**/*.nii.gz
 !Dataset/**/*.gitkeep
-Snapshots/*
+Snapshots/**/*.pt
+!Snapshots/**/*.gitkeep
 DataProcess/volumes/*
 
