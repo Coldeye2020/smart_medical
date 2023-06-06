@@ -3,10 +3,9 @@ import numpy as np
 from glob import glob
 import os
 import imageio
-import warnings
 from tqdm import tqdm
+from Code.utils.format_conversion import binary2edge
 
-# warnings.filterwarnings('ignore')
 
 
 # 读取文件名
@@ -77,3 +76,66 @@ for i in tqdm(images_2):
     num = 0
 
 print("Num of Unabled Imgs:{}".format(t_num))
+
+
+
+img_dir = "Dataset/tr_im.nii.gz"
+mask_dir = "Dataset/tr_mask.nii.gz"
+img = nib.load(img_dir)
+mask = nib.load(mask_dir)
+img_fdata = img.get_fdata()
+mask_fdata = mask.get_fdata()
+
+# 生成包含0-100的随机index tensor
+index = np.random.randint(0, 100, size=(1, 100)).squeeze()
+index_train = index[0:67]
+index_test = index[67:100]
+train_mask = mask_fdata[:, :, index_train]
+train_img = img_fdata[:, :, index_train]
+test_mask = mask_fdata[:, :, index_test]
+test_img = img_fdata[:, :, index_test]
+
+(_,_,z) = train_img.shape
+for j in range(z):   #是z的图象序列
+    slice = img_fdata[:, :, j] 
+    # 裁剪
+    # slice = slice[100:400, 200:430]
+    # 筛选出肺部清晰的图片
+    # if np.mean(slice) > -500 and np.mean(slice) < -250:
+    # 将 slice 的数据范围映射到 [0, 255]
+    slice = np.interp(slice, (slice.min(), slice.max()), (0, 255))
+    # 转换为 uint8 类型
+    slice = slice.astype(np.uint8)
+    imageio.imwrite("Dataset/TrainingSet/LungInfection-Train/Doctor-label/Imgs/"+'{}.jpg'.format(index_train[j]), slice)
+
+(_,_,z) = test_img.shape
+for j in range(z):   #是z的图象序列
+    slice = img_fdata[:, :, j] 
+    slice = np.interp(slice, (slice.min(), slice.max()), (0, 255))
+    slice = slice.astype(np.uint8)
+    imageio.imwrite("Dataset/TestingSet/LungInfection-Test/Imgs/"+'{}.jpg'.format(index_test[j]), slice)
+
+(_,_,z) = train_mask.shape
+for j in range(z):   #是z的图象序列
+    slice = mask_fdata[:, :, j] 
+    slice = np.interp(slice, (slice.min(), slice.max()), (0, 255))
+    # mask统一为0和255
+    slice[slice > 20] = 255
+    slice = slice.astype(np.uint8)
+    imageio.imwrite("Dataset/TrainingSet/LungInfection-Train/Doctor-label/GT/"+'{}.png'.format(index_train[j]), slice)
+
+(_,_,z) = test_mask.shape
+for j in range(z):   #是z的图象序列
+    slice = mask_fdata[:, :, j]
+    slice = np.interp(slice, (slice.min(), slice.max()), (0, 255))
+    slice[slice > 20] = 255
+    slice = slice.astype(np.uint8)
+    imageio.imwrite("Dataset/TestingSet/LungInfection-Test/GT/"+'{}_mask.png'.format(index_test[j]), slice)
+
+for i in glob("Dataset/TrainingSet/LungInfection-Train/Doctor-label/GT/*.png"):
+    edge = binary2edge(i)
+    imageio.imwrite("Dataset/TrainingSet/LungInfection-Train/Doctor-label/Edge/" + i.split("/")[-1], edge)
+
+# for i in glob("Dataset/TestingSet/LungInfection-Test/GT/*.png"):
+#     edge = binary2edge(i)
+#     imageio.imwrite("Dataset/TestingSet/LungInfection-Test/Edge/" + i.split("/")[-1], edge)
