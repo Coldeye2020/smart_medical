@@ -28,7 +28,7 @@ Inf-Net is a powerful network elaborately designed for COVID-19 CT segmentation.
 <p align="center">
     <img src="Imgs/Semi-InfNet.png"/> <br />
     <em> 
-    Figure 2. Overview of the proposed Semi-supervised Inf-Net framework.
+    Figure 3. Overview of the proposed Semi-supervised Inf-Net framework.
     </em>
 </p>
 
@@ -45,7 +45,7 @@ The required packages can be installed in the following way:
 ```shell
 # A cuda version of torch is recommended
 pip install torch torchvision torchaudio
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 2.1.2.Download Raw Data & Pretrained Model
@@ -77,7 +77,9 @@ You can directly run:
 ```shell
 python DataProcessing.py
 # 1600 unlabeled images are divided into 320 groups
-python Code/utils/split_1600.py
+cd Code/utils/
+python split_1600.py
+cd ../../
 ```
 
 ## 2.2 Semi Inf-Net Training
@@ -120,3 +122,12 @@ python Code/utils/split_1600.py
 ```python
 python MyTest_LungInf.py --pth_path Snapshots/save_weights/Semi-Inf_Net/Semi-Inf-Net-100.pth --save_path Results/Lung infection segmentation/Semi-Inf-Net
 ```
+
+# 3.Result
+The Results are stored in `Result/`.
+<p align="center">
+    <img src="Imgs/InfectionSeg.png"/> <br />
+    <em> 
+    Figure 4. Visualization
+    </em>
+</p>

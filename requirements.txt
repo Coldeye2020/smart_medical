@@ -2,6 +2,5 @@ opencv-python
 nibabel
 tqdm
 imageio
-glob
 scipy
 thop
