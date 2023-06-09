@@ -16,6 +16,8 @@ import numpy as np
 import random
 import shutil
 from scipy import misc
+# import imageio
+import cv2
 # ---- torch lib ----
 import torch
 from torch.autograd import Variable
@@ -157,7 +159,9 @@ def inference_module(_data_path, _save_path, _pth_path):
         #res = F.upsample(res, size=gt.shape, mode='bilinear', align_corners=False)
         res = res.sigmoid().data.cpu().numpy().squeeze()
         res = (res - res.min()) / (res.max() - res.min() + 1e-8)
-        misc.imsave(_save_path + '/' + name, res)
+        res_uint8 = (res * 255).astype(np.uint8)  # 转换为uint8类型
+        cv2.imwrite(_save_path + '/' + name, res)
+
 
 
 def movefiles(_src_dir, _dst_dir):
@@ -229,7 +233,7 @@ if __name__ == '__main__':
                      _resume_snapshot=snapshot_dir)
 
     # move img/pseudo-label into `./Dataset/TrainingSet/LungInfection-Train/Pseudo-label`
-    # shutil.copytree(semi_img, './Dataset/TrainingSet/LungInfection-Train/Pseudo-label/Imgs')
+    shutil.copytree(semi_img, './Dataset/TrainingSet/LungInfection-Train/Pseudo-label/Imgs')
     shutil.copytree(semi_mask, './Dataset/TrainingSet/LungInfection-Train/Pseudo-label/GT')
     shutil.copytree(semi_edge, 'Dataset/TrainingSet/LungInfection-Train/Pseudo-label/Edge')
     print('Pseudo Label Generated!')

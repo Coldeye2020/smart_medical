@@ -92,7 +92,7 @@ if __name__ == '__main__':
                         help='epoch number')
     parser.add_argument('--lr', type=float, default=1e-4,
                         help='learning rate')
-    parser.add_argument('--batchsize', type=int, default=24,
+    parser.add_argument('--batchsize', type=int, default=12,
                         help='training batch size')
     parser.add_argument('--trainsize', type=int, default=352,
                         help='set the size of training sample')
@@ -124,8 +124,10 @@ if __name__ == '__main__':
                         help='if True, you will train the model on pseudo-label')
     parser.add_argument('--train_save', type=str, default=None,
                         help='If you use custom save path, please edit `--is_semi=True` and `--is_pseudo=True`')
-
+    
     opt = parser.parse_args()
+
+    print(opt.is_semi, opt.is_pseudo)
 
     # ---- build models ----
     torch.cuda.set_device(opt.gpu_device)
