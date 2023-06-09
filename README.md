@@ -111,9 +111,9 @@ cd ../../
 2. Train
   ```shell
   # Firstly, train with pseudo label
-  python MyTrain_LungInf.py --train_path 'Dataset/TrainingSet/LungInfection-Train/Pseudo-label' --is_pseudo True --is_semi False
+  python MyTrain_LungInf.py --train_path 'Dataset/TrainingSet/LungInfection-Train/Pseudo-label' --is_pseudo True
   # Secondly, trian with ground truth label
-  python MyTrain_LungInf.py --train_path='Dataset/TrainingSet/LungInfection-Train/Doctor-label' --is_pseudo False --is_semi True
+  python MyTrain_LungInf.py --train_path='Dataset/TrainingSet/LungInfection-Train/Doctor-label' --is_semi True
   ```
 + You can generating pseudo labels again after trining and repeat the above process for several times untill the result converge.
 
