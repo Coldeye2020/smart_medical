@@ -199,12 +199,6 @@ if __name__ == '__main__':
     slices_lst = os.listdir(slices_dir)
     random.shuffle(slices_lst)
 
-    print("#" * 20, "\nStart Training (Inf-Net)\nThis code is written for 'Inf-Net: Automatic COVID-19 Lung "
-                    "Infection Segmentation from CT Scans', 2020, arXiv.\n"
-                    "----\nPlease cite the paper if you use this code and dataset. "
-                    "And any questions feel free to contact me "
-                    "via E-mail (gepengai.ji@163.com)\n----\n", "#" * 20)
-
     for i, split_name in enumerate(slices_lst):
         print('\n[INFO] {} ({}/320)'.format(split_name, i))
         # ---- inference ----

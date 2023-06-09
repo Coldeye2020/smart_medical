@@ -12,7 +12,7 @@ import shutil
 import random
 
 unlabeled_imgs_dir = '../../Dataset/TrainingSet/LungInfection-Train/Pseudo-label/Imgs'
-save_path = '../../Dataset/TrainingSet/LungInfection-Train/Pseudo-label/DataPrepare/Imgs_splits'
+save_path = '../../Dataset/TrainingSet/LungInfection-Train/Pseudo-label/DataPrepare/Imgs_split'
 
 img_list = os.listdir(unlabeled_imgs_dir)
 random.shuffle(img_list)
