@@ -34,6 +34,7 @@ ResName='_result.txt';  % You can change the result name.
 
 Thresholds = 1:-1/255:0;
 datasetNum = length(Datasets);
+fprintf('datasetNum %d', datasetNum);
 
 for d = 1:datasetNum
     
@@ -53,6 +54,7 @@ for d = 1:datasetNum
     %For Multi-class lung infection segmentation, there are two foloders.
     for c = 1:numFolder
         modelNum = length(curModel);
+        fprintf('modelNum: %d\n', modelNum);
         
         ResPath = [ResDir dataset '-' int2str(c) '-mat/']; % The result will be saved in *.mat file so that you can used it for the next time.
         if ~exist(ResPath,'dir')
@@ -75,7 +77,9 @@ for d = 1:datasetNum
             end
             
             imgFiles = dir([resMapPath '*.png']);
+            fprintf('resMapPath %s\n', resMapPath);
             imgNUM = length(imgFiles);
+            fprintf('imgNum %d\n', imgNUM);
             
             [threshold_Emeasure, threshold_Precion, threshold_Recall] = deal(zeros(imgNUM,length(Thresholds)));
             [threshold_Sensitivity, threshold_Specificity, threshold_Dice] = deal(zeros(imgNUM,length(Thresholds)));
@@ -84,10 +88,11 @@ for d = 1:datasetNum
             
             for i = 1:imgNUM
                 name =  imgFiles(i).name;
+                gtName = strrep(name,'.png','_mask.png');
                 fprintf('Evaluating(%s Dataset,%s Model, %s Image): %d/%d\n',dataset, model, name, i,imgNUM);
                 
                 %load gt
-                gt = imread([gtPath name]);
+                gt = imread([gtPath gtName]);
                 
                 if (ndims(gt)>2)
                     gt = rgb2gray(gt);

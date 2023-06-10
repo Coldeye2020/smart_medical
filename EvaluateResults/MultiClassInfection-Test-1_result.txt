@@ -1,1 +1,5 @@
-(Dataset:MultiClassInfection-Test; Model:Semi-Inf-Net_UNet) meanDic:0.624;meanSen:0.618;meanSpe:0.966;Sm:0.706;meanEm:0.889;MAE:0.067.
+(Dataset:MultiClassInfection-Test; Model:DeepLabV3Plus_Stride8) meanDic:NaN;meanSen:NaN;meanSpe:NaN;Sm:NaN;meanEm:NaN;MAE:NaN.
+(Dataset:MultiClassInfection-Test; Model:DeepLabV3Plus_Stride16) meanDic:NaN;meanSen:NaN;meanSpe:NaN;Sm:NaN;meanEm:NaN;MAE:NaN.
+(Dataset:MultiClassInfection-Test; Model:FCN8s_1100) meanDic:NaN;meanSen:NaN;meanSpe:NaN;Sm:NaN;meanEm:NaN;MAE:NaN.
+(Dataset:MultiClassInfection-Test; Model:Semi-Inf-Net_FCN8s_1100) meanDic:NaN;meanSen:NaN;meanSpe:NaN;Sm:NaN;meanEm:NaN;MAE:NaN.
+(Dataset:MultiClassInfection-Test; Model:Semi-Inf-Net_UNet) meanDic:NaN;meanSen:NaN;meanSpe:NaN;Sm:NaN;meanEm:NaN;MAE:NaN.

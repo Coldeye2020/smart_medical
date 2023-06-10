@@ -68,9 +68,9 @@ pip install -r requirements.txt
 We provide an auto-processing python script to:
 + convert raw *.nii.gz into *.jpg or *.png files
 + store them into correct place:
-  + TestSet (33 randomly selected images from labeled dataset): `Dataset/TestingSet/LungInfection-Test/`.
-  + Labeled TrainSet (the rest 67 images in labeled dataset): `Dataset/TrainingSet/LungInfection-Train/Doctor-label/`.
-  + Unlabeled TrainSet (1600 unlabeled images): `Dataset/TrainingSet/LungInfection-Train/Doctor-label/`.
+  + TestSet (25 randomly selected images from labeled dataset): `Dataset/TestingSet/LungInfection-Test/`.
+  + Labeled TrainSet (the rest 50 images in labeled dataset): `Dataset/TrainingSet/LungInfection-Train/Doctor-label/`.
+  + Unlabeled TrainSet (1649 unlabeled images): `Dataset/TrainingSet/LungInfection-Train/Pseudo-label/`.
 
 
 You can directly run:
@@ -85,7 +85,7 @@ cd ../../
 ## 2.2 Semi Inf-Net Training
 ### 2.2.1.Inf-Net
 1. Train
-  + First, you should pretrain Inf-Net on Labeled TrainSet (67 labeled images), just run:
+  + First, you should pretrain Inf-Net on Labeled TrainSet (50 labeled images), just run:
   ```shell
   python MyTrain_LungInf.py
   ```
@@ -95,7 +95,7 @@ cd ../../
 
   + Then, you execute inference by running:
   ```shell
-  python MyTest_LungInf.py
+  python MyTest_LungInf.py --pth_path Snapshots/save_weights/Inf-Net/Inf-Net-100.pth --save_path "Results/Lung infection segmentation/Inf-Net/"
   ```
   + The segmentation results will be saved in `Results/Lung infection segmentation/Inf-Net`
 
@@ -111,16 +111,16 @@ cd ../../
 2. Train
   ```shell
   # Firstly, train with pseudo label
-  python MyTrain_LungInf.py --train_path 'Dataset/TrainingSet/LungInfection-Train/Pseudo-label' --is_pseudo True
+  python MyTrain_LungInf.py --train_path 'Dataset/TrainingSet/LungInfection-Train/Pseudo-label' --is_pseudo True 
   # Secondly, trian with ground truth label
-  python MyTrain_LungInf.py --train_path='Dataset/TrainingSet/LungInfection-Train/Doctor-label' --is_semi True
+  python MyTrain_LungInf.py --train_path='Dataset/TrainingSet/LungInfection-Train/Doctor-label' --is_semi True 
   ```
 + You can generating pseudo labels again after trining and repeat the above process for several times untill the result converge.
 
 3. Test
 + Just run:
 ```python
-python MyTest_LungInf.py --pth_path Snapshots/save_weights/Semi-Inf_Net/Semi-Inf-Net-100.pth --save_path Results/Lung infection segmentation/Semi-Inf-Net
+python MyTest_LungInf.py --pth_path Snapshots/save_weights/Semi-Inf-Net/Inf-Net-100.pth --save_path "Results/Lung infection segmentation/Semi-Inf-Net/"
 ```
 
 # 3.Result

@@ -15,6 +15,7 @@ import argparse
 from scipy import misc
 from Code.model_lung_infection.InfNet_Res2Net import Inf_Net as Network
 from Code.utils.dataloader_LungInf import test_dataset
+import cv2
 
 
 def inference():
@@ -56,7 +57,7 @@ def inference():
         # res = F.upsample(res, size=(ori_size[1],ori_size[0]), mode='bilinear', align_corners=False)
         res = res.sigmoid().data.cpu().numpy().squeeze()
         res = (res - res.min()) / (res.max() - res.min() + 1e-8)
-        misc.imsave(opt.save_path + name, res)
+        cv2.imwrite(opt.save_path + name, res)
 
     print('Test Done!')
 
