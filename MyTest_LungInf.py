@@ -57,7 +57,7 @@ def inference():
         # res = F.upsample(res, size=(ori_size[1],ori_size[0]), mode='bilinear', align_corners=False)
         res = res.sigmoid().data.cpu().numpy().squeeze()
         res = (res - res.min()) / (res.max() - res.min() + 1e-8)
-        cv2.imwrite(opt.save_path + name, res)
+        cv2.imwrite(opt.save_path + name, res * 255)
 
     print('Test Done!')
 

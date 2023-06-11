@@ -52,7 +52,7 @@ pip install -r requirements.txt
 + Main task dataset:
   + Description: 100 labelled CT scans from the COVID-19 CT Segmentation dataset [1].
   + URL: CT volumes[[tr_im.nii.gz](https://drive.google.com/file/d/1SJoMelgRqb0EuqlTuq6dxBWf2j9Kno8S/view?usp=sharing)], Mask volumes[[tr_mask.nii.gz](https://drive.google.com/open?id=1MEqpbpwXjrLrH42DqDygWeSkDq0bi92f)].
-  + Location: Put both files `tr_im.nii.gz` and `tr_im.nii.gz` into `Dataset/`
+  + Location: Put both files `tr_im.nii.gz` and `tr_mask.nii.gz` into `Dataset/`
 + Unlabeled dataset:
   + Description: 1600 unlabeled images from the COVID-19 CT Collection dataset [2].
   + URL: Unlabeled CT volumes [[volumes](https://academictorrents.com/details/136ffddd0959108becb2b3a86630bec049fcb0ff)]
@@ -83,6 +83,11 @@ cd ../../
 ```
 
 ## 2.2 Semi Inf-Net Training
+:::tip
+In stead of training the model step by step, we provide well-trianed paramters, you can click [here](https://drive.google.com/drive/folders/13mczDJdE0dd2wU0DmDm9rE0qyZLsflk7?usp=drive_link) to download the parameters and put it in to `Snapshots/save_weights/`.
+:::
+
+
 ### 2.2.1.Inf-Net
 1. Train
   + First, you should pretrain Inf-Net on Labeled TrainSet (50 labeled images), just run:
@@ -124,7 +129,7 @@ python MyTest_LungInf.py --pth_path Snapshots/save_weights/Semi-Inf-Net/Inf-Net-
 ```
 
 # 3.Result
-The Results are stored in `Result/`.
+The Results are stored in `Results/Lung infection segmentation`.
 <p align="center">
     <img src="Imgs/InfectionSeg.png"/> <br />
     <em> 

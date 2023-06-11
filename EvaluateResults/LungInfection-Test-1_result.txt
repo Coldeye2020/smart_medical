@@ -1,4 +1,4 @@
 (Dataset:LungInfection-Test; Model:UNet) meanDic:NaN;meanSen:NaN;meanSpe:NaN;Sm:NaN;meanEm:NaN;MAE:NaN.
 (Dataset:LungInfection-Test; Model:UNet++) meanDic:NaN;meanSen:NaN;meanSpe:NaN;Sm:NaN;meanEm:NaN;MAE:NaN.
-(Dataset:LungInfection-Test; Model:Inf-Net) meanDic:0.797;meanSen:0.869;meanSpe:0.979;Sm:0.842;meanEm:0.951;MAE:0.025.
-(Dataset:LungInfection-Test; Model:Semi-Inf-Net) meanDic:0.820;meanSen:0.857;meanSpe:0.983;Sm:0.855;meanEm:0.963;MAE:0.022.
+(Dataset:LungInfection-Test; Model:Inf-Net) meanDic:0.750;meanSen:0.838;meanSpe:0.968;Sm:0.826;meanEm:0.898;MAE:0.037.
+(Dataset:LungInfection-Test; Model:Semi-Inf-Net) meanDic:0.773;meanSen:0.826;meanSpe:0.976;Sm:0.855;meanEm:0.912;MAE:0.030.
