@@ -83,8 +83,10 @@ cd ../../
 ```
 
 ## 2.2 Semi Inf-Net Training
-:::tip
-In stead of training the model step by step, we provide well-trianed paramters, you can click [here](https://drive.google.com/drive/folders/13mczDJdE0dd2wU0DmDm9rE0qyZLsflk7?usp=drive_link) to download the parameters and put it in to `Snapshots/save_weights/`.
+<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #4a4a4a; border-radius: 5px;">
+    <b>Tips：</b> Instead of training the model step by step, we provide well-trained parameters. You can click <a href="https://drive.google.com/drive/folders/13mczDJdE0dd2wU0DmDm9rE0qyZLsflk7?usp=drive_link">here</a> to download the parameters and put them into `Snapshots/save_weights/`.
+</div>
+
 :::
 
 
